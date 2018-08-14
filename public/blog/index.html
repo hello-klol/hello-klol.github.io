@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="English">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=6.4.0">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"display":"remove"},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="It&apos;s a Data Science blog">
+<meta name="keywords" content="data science, blog, katie clark, python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Come with me now on a journey through code and data...">
+<meta property="og:url" content="http://hello-klol.github.io/blog/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="It&apos;s a Data Science blog">
+<meta property="og:locale" content="English">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Come with me now on a journey through code and data...">
+<meta name="twitter:description" content="It&apos;s a Data Science blog">
+
+
+
+
+
+
+  <link rel="canonical" href="http://hello-klol.github.io/blog/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Come with me now on a journey through code and data...</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="English">
+
+  
+  
+
+  <div class="container  
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Come with me now on a journey through code and data...</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-child"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />Blog</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+    <a href="https:/github.com/hello-klol" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />GitHub</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-twitter">
+    <a href="https:/twitter.com/_katie_clark_" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />Twitter</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-stackoverflow">
+    <a href="https:/stackoverflow.com/users/1168920/katie" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-stack-overflow"></i> <br />StackOverflow</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-cv">
+    <a href="/cv.pdf" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />CV</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/08/04/Data-Science-Project-Workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katie Clark">
+      <meta itemprop="description" content="It's a Data Science blog">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Come with me now on a journey through code and data...">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/Data-Science-Project-Workflow/" itemprop="url">
+                  Data Science Project Workflow
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-04 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-04T00:00:00Z">2018-08-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-14 09:33:45" itemprop="dateModified" datetime="2018-08-14T09:33:45Z">2018-08-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="FROM-ENGINEER-TO-DATA-SCIENTIST"><a href="#FROM-ENGINEER-TO-DATA-SCIENTIST" class="headerlink" title="FROM ENGINEER TO DATA SCIENTIST"></a>FROM ENGINEER TO DATA SCIENTIST</h2><p>When moving roles from Software Developer to Data Scientist, the hardest part of the transition was the mindset. I was equipped with the technical skills for working with data but found myself lost and working in a scattered and almost directionless way on my first project. </p>
+<p>I was so used to being told a product spec, breaking it down into tasks, working on features and putting them into the product release cycle. In the past I would be given definitions and directions by a product manager and understood every in and out of unit tests, code review, integration tests, QA. It was a very clear path. </p>
+<p>I joined my company’s Data Science team as it was first formed. The team was comprised of people with an eclectic mix of backgrounds, and hugely knowledgeable in their areas of expertise. However, while some had a background in research, none had worked commercially as a Data Scientist before, and as this type of team was new to the company as well, it took us all a while to find our feet. In an engineering heavy company, we were at first treated more like engineers (which most of us previously had been), with similar expectations, and attempted to follow similar workflows. This did not work.</p>
+<p>In our first year or so the team split into sub-teams for different projects, each working in their own way to solve the company’s problems. Project workflows varied hugely depending on who was leading the team. During our morning stand-up it was hard to keep track of the progress of each sub-team or to assess whether the end was in sight for a piece of work. It must have been even harder for stakeholders outside of the team. </p>
+<p>A year or so after it’s formation, the team took time out to work together and feedback to one another on what worked, what didn’t, and how some people who had experience in either research or leading a tech team might go about structuring a project or piece of work in a previous role. We did our best to formalise these ideas and sketch an outline of how a research project should go. What follows is my interpretation, somewhat embellished from other research I’ve compiled from online resources. It helps me structure my approach, know where I am in a process, and gives me the satisfaction of ticking boxes feeling safe in the knowledge I haven’t missed a vital part of the process.</p>
+<h2 id="PROJECT-WORKFLOW"><a href="#PROJECT-WORKFLOW" class="headerlink" title="PROJECT WORKFLOW"></a>PROJECT WORKFLOW</h2><p><img src="/images/project_workflow.png" alt="Project Workflow"></p>
+<h2 id="High-level-problem"><a href="#High-level-problem" class="headerlink" title="High level problem"></a>High level problem</h2><p>In a business context the high-level problem rarely comes from some cool thing a Data Scientist just thought up, or some new piece of technology applied in a zany new way. The business will present their problems, you as a Data Scientist will solve them. The first step in assisting in this way is to get clarity on the high-level problem, understand where it’s come from, and get a clear set of requirements. </p>
+<h2 id="Define-problem"><a href="#Define-problem" class="headerlink" title="Define problem"></a>Define problem</h2><p>Before delving too deep and investing a lot of time in the project there’s a few things to get clarity on. No. 1: Is this really a Data Science problem? Could it be solved by a simple new feature in the software or does it really require some deeper analysis, modelling, and research. In some cases problems can be solved by Engineers by use of third party libraries (this will come up in the cost-benefit analysis). Only when such other options have been ruled out, and the decision is clear that the benefits of solving this problem are worth the costs, will we start to research the problem space to come up with a clearly defined problem spec.</p>
+<h2 id="Well-defined-problem"><a href="#Well-defined-problem" class="headerlink" title="Well defined problem"></a>Well defined problem</h2><p>It’s easy to get carried away and jump right in. You come up with some cool solution and want to try it immediately. This might be enjoyable, but it is not the most efficient use of your time. It’s likely that many have come before you in trying to solve your problem, or something relatively similar. Do your research, <em>compile a literature review</em>, take heed from the mistakes of others and inspiration from their ideas. Really evaluate what it is you are trying to do, ask yourself how the results of your work will be used, get access to and <em>explore the data</em> you have available, and assess the assumptions you will be making so you can have a level of awareness if they fail to hold up.</p>
+<p>A well defined problem will include some <em>idea of how you will structure your scientific evaluation system</em>. What variables will you use to assess and compare the quality of a solution? How good is good enough? What if we fail to achieve this, at what point can we prove this problem cannot be solved? Can we draw up a set of stopping conditions? </p>
+<p>We also want to consider the potential solution’s quality or accuracy against the cost of building it into a business application - e.g. using a heavily complex solution such as layers of neural networks or a Spark cluster, that few know how to update or maintain, or there isn’t available hardware for, might not be worth the increased accuracy vs. a simpler solution. If the cost of the complex solution is ruled out, we can drop any ideas to do with that now without wasting time exploring something that might be technically feasible, but commercially invalid.</p>
+<h2 id="Exploratory-data-analysis"><a href="#Exploratory-data-analysis" class="headerlink" title="Exploratory data analysis"></a>Exploratory data analysis</h2><p>Before building any complex models, it’s important to get familiar with the data you will be working with. Look over any documentation and take note if there are gaps or errors in explanation (if it exists at all), attempt to identify key variables and chart relationships between them. This is a good time to check for outliers or data entry issues that might be skewing your data.</p>
+<h2 id="Data-appraisal"><a href="#Data-appraisal" class="headerlink" title="Data appraisal"></a>Data appraisal</h2><p>Collate the information from the EDA phase into a shared document that you can refer to in future. It will be a good reminder as you are working your way through potential solutions of any pitfalls that may come from the data, and it can act as something to point to when communicating reasons for choices with stakeholders. </p>
+<h2 id="Design-experiment"><a href="#Design-experiment" class="headerlink" title="Design experiment"></a>Design experiment</h2><p>Combine the information you have gathered from the defined problem and data appraisal to set up an experiment workflow. Take into account details from your literature review, decide upon the measurables you are going to put in place to evaluate quality of solutions, the data available, the limitations of maintainability and cost, and compile a list of possible solutions ordered by priority of simplest first to the increasingly complex. </p>
+<p>Your workflow should include an evaluation framework, a spec for the measurables that can be fed into this framework so that each solution can be designed to output these and therefore be directly compared to other solutions.</p>
+<h2 id="Solve-Measure-Cycle"><a href="#Solve-Measure-Cycle" class="headerlink" title="Solve - Measure Cycle"></a>Solve - Measure Cycle</h2><p>Starting with the simplest solution to get a baseline, work through potential solutions one at a time. This is represented by a cycle because you will evaluate your solutions as you go and continue to tweak them for a time. If, or when, tweaking this particular approach is failing to give much improvement then evaluate the candidate solution and potentially move on to the next plausible approach. </p>
+<p>If at any point the solution meets the requirements laid out in the defined problem, or stopping conditions are met, then stop here, you have your result. </p>
+<p>Time spent on each solution should be roughly time-boxed, there is usually limited time-resources and you don’t want to become so invested in your first potential solution that you fail to move on to something that might be more appropriate. At the same time you don’t want to give up so quickly that you fail to see the value in a given approach. It’s all about finding the balance.</p>
+<h2 id="Candidate-solution-and-result"><a href="#Candidate-solution-and-result" class="headerlink" title="Candidate solution and result"></a>Candidate solution and result</h2><p>The result will consist of the measurables that were fed into the evaluation system, and how the solution performed compared to others tested. It will also include specific details about models used, parameters, data used for training. There must be enough information such that it can be replicated if someone else were to come across this information and want to try it. A repo containing the code along with some documentation is ideal.</p>
+<h2 id="Does-it-meet-acceptance-criteria"><a href="#Does-it-meet-acceptance-criteria" class="headerlink" title="Does it meet acceptance criteria"></a>Does it meet acceptance criteria</h2><p>The acceptance criteria will have been agreed upon with stakeholders when first defining the project. If the solution is good enough to meet this criteria it is likely that it’s time to stop, write up your results, and move on. Most Data Science projects could go on indefinitely without these constraints, you could go on forever tweaking parameters and trying different approaches, there will always be room for improvement. The acceptance criteria is here to tell us that this is <em>good enough</em>.</p>
+<p>If the solution doesn’t meet the acceptance criteria, we can continue on to another potential solution. If we’re out of solutions, it’s time to write up the project and feedback the results.</p>
+<h2 id="Well-defined-solutions"><a href="#Well-defined-solutions" class="headerlink" title="Well defined solutions"></a>Well defined solutions</h2><p>A well defined solution will contain the information from the original candidate solution section but will be extended to include some sort of prototype or specification giving a recommendation of how this solution could be built into a product to meet the business needs. It will reconsider the high level problem and how this approach can be used to solve it.</p>
+<h2 id="Project-write-up"><a href="#Project-write-up" class="headerlink" title="Project write up"></a>Project write up</h2><p>This is a summary of all of the preceding stages. It walks the reader through the project’s steps, including an overview of the research done, and reasons for choices of potential solutions. It includes brief details from Data Appraisal, and summarises and outline of each potential solution’s approach. It will cover trialed results without getting too bogged down in numbers. The write up should provide links to all documentation and code, including solution recommendation if there is one, or a clear explanation if acceptance criteria was not met - such as lack of quality data, or problem too subjective to be automated. This is storytelling and not scientific.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katie Clark</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
