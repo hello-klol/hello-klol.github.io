@@ -5,9 +5,9 @@ tags:
 ---
 
 ## FROM ENGINEER TO DATA SCIENTIST
-When moving roles from Software Developer to Data Scientist, the hardest part of the transition was the mindset. I was equipped with the technical skills for working with data but found myself lost and working in a scattered and almost directionless way on my first project. 
+When moving roles from Software Developer to Data Scientist, the hardest part of the transition for me was the mindset. I was equipped with the technical skills for working with data but found myself lost, without a clear direction or path to navigate a problem space. 
 
-I was so used to being told a product spec, breaking it down into tasks, working on features and putting them into the product release cycle. In the past I would be given definitions and directions by a product manager and understood every in and out of unit tests, code review, integration tests, QA. It was a very clear path. 
+I was used to being told a product spec and working on features to be fed into a product release cycle, there seems to be a very well trodden path when it comes to software development and I knew it well. As far as I'm aware the process for data science is not so well established as even the definition of the role seems to vary so hugely between different companies.
 
 I joined my company's Data Science team as it was first formed. The team was comprised of people with an eclectic mix of backgrounds, and hugely knowledgeable in their areas of expertise. However, while some had a background in research, none had worked commercially as a Data Scientist before, and as this type of team was new to the company as well, it took us all a while to find our feet. In an engineering heavy company, we were at first treated more like engineers (which most of us previously had been), with similar expectations, and attempted to follow similar workflows. This did not work.
 
