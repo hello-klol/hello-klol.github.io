@@ -1,5 +1,5 @@
 # About me
-Currently off on an adventure, living out of a 7kg cabin luggage bag and traveling the world. 
+Currently off on an adventure, living out of 7kg cabin luggage and traveling the world. 
 
 I left permanent employment in April 2018 after 9 years working with code and have started this blog for personal projects. It will probably consist mostly of Kaggle competitons, reflections on what I've learnt from previous employment, and anything new I learn along the way. 
 
@@ -16,6 +16,6 @@ I left permanent employment in April 2018 after 9 years working with code and ha
 - BSc Mathematics with Computer Science
 
 
-<p>
-<img src="/images/about.jpg" alt="Team player"/>
-</p>
+<figure>
+  <img src="/images/about.jpg" alt="Team player" title="Engineers in the park"/>
+</figure>
