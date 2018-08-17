@@ -84,7 +84,7 @@
     root: '/',
     scheme: 'Muse',
     version: '6.4.0',
-    sidebar: {"display":"remove"},
+    sidebar: {"display":"post"},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -138,6 +138,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124180262-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124180262-1');
+</script>
 
 
 
@@ -208,68 +217,105 @@
 
 
 <nav class="site-nav">
-  <ul id="menu" class="menu">
-    
-      <li class="menu-item menu-item-">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
-      <li class="menu-item menu-item-">
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-child"></i> <br />About</a>
   </li>
-      <li class="menu-item menu-item- menu-item-active">
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog menu-item-active">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-book"></i> <br />Blog</a>
   </li>
-      <li class="menu-item menu-item-">
-    <a href="https://github.com/hello-klol" rel="section">
+        
+        
+        
+          
+          <li class="menu-item menu-item-github">
+    <a href="https:/github.com/hello-klol" rel="section">
       <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />GitHub</a>
   </li>
-      <li class="menu-item menu-item-">
-    <a href="https://twitter.com/_katie_clark_" rel="section">
+        
+        
+        
+          
+          <li class="menu-item menu-item-twitter">
+    <a href="https:/twitter.com/_katie_clark_" rel="section">
       <i class="menu-item-icon fa fa-fw fa-twitter"></i> <br />Twitter</a>
   </li>
-      <li class="menu-item menu-item-">
-    <a href="https://stackoverflow.com/users/1168920/katie" rel="section">
+        
+        
+        
+          
+          <li class="menu-item menu-item-stackoverflow">
+    <a href="https:/stackoverflow.com/users/1168920/katie" rel="section">
       <i class="menu-item-icon fa fa-fw fa-stack-overflow"></i> <br />StackOverflow</a>
   </li>
-      <li class="menu-item menu-item-">
+        
+        
+        
+          
+          <li class="menu-item menu-item-cv">
     <a href="/cv.pdf" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />CV</a>
   </li>
-  </ul>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
 
   
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
 
   
 
-
+  
 </nav>
 
 
@@ -298,14 +344,6 @@
     <div id="posts" class="posts-collapse">
       <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-      </span>
       
 
       
@@ -367,6 +405,78 @@
 
         </div>
         
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Katie Clark</p>
+              <p class="site-description motion-element" itemprop="description">It's a Data Science blog</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
       </div>
     </main>
 
@@ -381,6 +491,17 @@
   
 
   
+
+  
+    <span class="post-meta-divider">|</span>
+    <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <div class="theme-info">Theme (<a class="theme-link" target="_blank" href="https://github.com/hello-klol/hexo-theme-next">hacked version</a> of) <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+  
+
 </div>
 
 
@@ -408,7 +529,7 @@
     
 
     
-
+	
     
 
     
@@ -486,9 +607,13 @@
 
   
 
-
+  
+    <script id="dsq-count-scr" src="https://hello-klol.disqus.com/count.js" async></script>
+  
 
   
+
+
 
 
 
