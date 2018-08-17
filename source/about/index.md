@@ -1,4 +1,8 @@
-# About me
+---
+comments: false
+title: About me
+layout: simple-page
+---
 Currently off on an adventure, living out of 7kg cabin luggage and traveling the world. 
 
 I left permanent employment in April 2018 after 9 years working with code and have started this blog for personal projects. It will probably consist mostly of Kaggle competitons, reflections on what I've learnt from previous employment, and anything new I learn along the way. 

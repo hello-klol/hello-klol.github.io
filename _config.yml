@@ -47,11 +47,13 @@ theme_config:
     StackOverflow: https://stackoverflow.com/users/1168920/katie || stack-overflow
     CV: /cv.pdf || user
   sidebar:
-    display: remove
+    display: post
+  cheers_enabled: false
   disqus:
-    enable: false 
+    enable: true 
     shortname: hello-klol
     count: true
+  google_analytics: UA-124180262-1
 
 # Writing
 new_post_name: :title.md # File name of new posts

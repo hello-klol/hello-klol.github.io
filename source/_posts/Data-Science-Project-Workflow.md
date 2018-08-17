@@ -1,7 +1,8 @@
 ---
 title: Data Science Project Workflow
 date: 2018-08-04
-tags:
+description: Outline of project workflow for a Data Science project. How to structure your research project so you don't miss any vital steps!
+
 ---
 ## FROM ENGINEER TO DATA SCIENTIST
 When moving roles from Software Developer to Data Scientist, the hardest part of the transition for me was the mindset. I was equipped with the technical skills for working with data but found myself without a clear path to navigate a problem space.
@@ -12,7 +13,7 @@ I joined my company's Data Science team when it was first formed. The team was c
 
 During our first year or so the team split into sub-teams for different projects, each working in their own way to provide solutions to business problems. Project workflows varied hugely depending on who was leading the team and during our morning stand-up it was hard to keep track of the progress of each sub-team. It was tricky for other team members to assess whether the end was in sight for a piece of work. It must have been a nightmare for stakeholders trying to keep track.
 
-A year or so after it's formation, the team took time out to work together and feedback to one another on what worked, what didn't, and how some people (who had experience in either research or leading a tech team) might go about structuring a project or piece of work in a previous role. We did our best to formalise these ideas and sketch an outline of how a research project should go. What follows is my interpretation, somewhat embellished from other research I've compiled from online resources. It helps me structure my approach, know where I am in a process, and gives me the satisfaction of ticking boxes feeling safe in the knowledge I haven't missed a vital part of the process.
+A year or so after it's formation, the team took time out to work together and feedback to one another on what worked, what didn't, and how some people (who had experience in either research or leading a tech team) might go about structuring a project or piece of work in a previous role. We did our best to formalise these ideas and sketch an outline of how a research project should go. What follows is my interpretation, somewhat embellished from other research I've compiled from online resources. It helps me structure my approach, know where I am in a process, and gives me the satisfaction of having a checklist of tasks to tick off so I can feel safe in the knowledge I haven't missed a vital part of the process.
 ## PROJECT WORKFLOW
 ![Project Workflow](/images/project_workflow.png)
 ### 📄 High level problem
