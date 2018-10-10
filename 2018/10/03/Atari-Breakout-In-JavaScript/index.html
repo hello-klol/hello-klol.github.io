@@ -1,0 +1,152 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content=Learning JavaScript by building my own implementation of Atari&#39;s Breakout>
+<meta name="keywords" content=katie clark, javascript, atari breakout, mozilla>
+
+<title>Atari Breakout In JavaScript | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content=Atari Breakout In JavaScript>
+<meta property="og:url" content="http://hello-klol.github.io//index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content=Learning JavaScript by building my own implementation of Atari&#39;s Breakout>
+<meta property="og:locale" content="English">
+    <title>Atari Breakout In JavaScript</title>
+  </head>
+  <body>
+<div class="header">
+  <!-- <a href="/" class="title-bar" rel="start"> -->
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+    <!-- </a> -->
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https:/github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https:/twitter.com/_katie_clark_" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https:/stackoverflow.com/users/1168920/katie" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/08/04/Data-Science-Project-Workflow/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/Atari-Breakout-In-JavaScript/">
+    <h1 class="post-title" itemprop="name headline">Atari Breakout In JavaScript</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2018-10-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-03T00:00:00Z">2018-10-03</time>
+    <div class="post-description">Learning JavaScript by building my own implementation of Atari&#39;s Breakout</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <canvas id="gameCanvas" width="480" height="320" style="margin:auto;background:#eee;display:block;"></canvas>
+<script type="text/javascript" src="game.js"></script>
+<div style="margin-top:30px">
+  <h1>Learning some JavaScript</h1>
+  <p>
+  I've been learning bits of JavaScript recently in order to build this blog. I want to try my hand at Reinforcement Learning so I 
+  built this game in hope of training some AI to play it for me. 
+  </p>
+  <p>
+  For now, I've followed a 
+  <a href="https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript" rel="external" target="_blank" style="color:#0095DD">
+    tutorial by Mozilla</a> and tweaked the code here and there in hope of making it more readable. You can view the source 
+  <a href="https://github.com/hello-klol/js_breakout" rel="external" target="_blank" style="color:#0095DD">here</a>.
+  </p>
+</div>
+
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="&#x2F;2018&#x2F;09&#x2F;03&#x2F;Poverty-Prediction-Kaggle-Competition-Feature-Generation/" rel="prev" title="Poverty Prediction Kaggle Competition: Feature Generation">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">Poverty Prediction Kaggle Competition: Feature Generation</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
