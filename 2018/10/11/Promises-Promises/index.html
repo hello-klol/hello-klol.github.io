@@ -1,0 +1,672 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content="Asyncronous and synchronous Javascript examples and how to write Promises">
+<meta name="keywords" content="katie clark, javascript, asynchronous, synchronous, promise">
+
+<title>Promises Promises | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promises Promises">
+<meta property="og:url" content="http://hello-klol.github.io/2018/10/11/Promises-Promises/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="Asyncronous and synchronous Javascript examples and how to write Promises">
+<meta property="og:locale" content="English">
+    <title>Promises Promises</title>
+  </head>
+  <body>
+<div class="header">
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/_katie_clark_" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://stackoverflow.com/users/1168920/katie" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/10/11/Promises-Promises/">
+    <h1 class="post-title" itemprop="name headline">Promises Promises</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2018-10-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-11T00:00:00Z">2018-10-11</time>
+    <div class="post-description">Asyncronous and synchronous Javascript examples and how to write Promises</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <div class="notebook">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sync-/-Async">Sync / Async<a class="anchor-link" href="#Sync-/-Async">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A synchronous function is one that returns immediately:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">syncFn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;Sychronous call!&apos;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The function will run before any following lines are run:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;First&apos;</span><span class="p">)</span>
+<span class="nx">syncFn</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;Last&apos;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>First
+Sychronous call!
+Last
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An asynchronous function sets up some logic to be run, but doesn&apos;t block following lines from being run while waiting for that logic to be executed:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">asyncFn</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;Asynchronous call!&apos;</span><span class="p">)</span>
+    <span class="p">},</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span> 
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;First&apos;</span><span class="p">)</span>
+<span class="nx">asyncFn</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;Last&apos;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>First
+Last
+Asynchronous call!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-Use">Example Use<a class="anchor-link" href="#Example-Use">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For my blog generator I need to load files from directories to process them. I&apos;m using a library called <a href="https://www.npmjs.com/package/find" rel="external" target="_blank">`find`</a> to get all files in a directory.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kr">const</span> <span class="nx">find</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&apos;find&apos;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">find</span><span class="p">.</span><span class="nx">file</span><span class="p">(</span><span class="s1">&apos;example&apos;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ &apos;example/file1.txt&apos;, &apos;example/file2.html&apos;, &apos;example/file3.md&apos; ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is asynchronous - meaning everything that relies on the files being loaded first must run inside the nested function. Things can easily get out of hand with continued nested functions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A workaround <em>could</em> look something like the following:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">find</span><span class="p">.</span><span class="nx">file</span><span class="p">(</span><span class="s1">&apos;example&apos;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">useFiles</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="kd">function</span> <span class="nx">useFiles</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ &apos;example/file1.txt&apos;, &apos;example/file2.html&apos;, &apos;example/file3.md&apos; ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But this also kind of has a long chain effect which could get confusing. You can&apos;t really return the file names and assign them to a const or variable to be used later like we are used to with synchronous functions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Promises are used to write aynchronous code in a readable way:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">findFile</span><span class="p">(</span><span class="nx">dir</span><span class="p">)</span> <span class="p">{</span>                                                                                                                                         
+   <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>                                                                                                                        
+       <span class="nx">find</span><span class="p">.</span><span class="nx">file</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">resolve</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span>                                                                                                                                                 
+       <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>                                                                                                                                          
+           <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>                                                                                                                                                    
+       <span class="p">})</span>                                                                                                                                                                 
+   <span class="p">})</span>                                                                                                                                                                     
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">exampleFiles</span> <span class="o">=</span> <span class="nx">findFile</span><span class="p">(</span><span class="s1">&apos;example&apos;</span><span class="p">)</span> <span class="c1">// load the files list into a var</span>
+<span class="nx">exampleFiles</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ &apos;example/file1.txt&apos;, &apos;example/file2.html&apos;, &apos;example/file3.md&apos; ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since we&apos;re just feeding the files or error into the <code>resolve</code> and <code>reject</code> functions and not doing anything with them beforehand we can rewrite this functionality in a slightly cleaner way:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">findFile</span><span class="p">(</span><span class="nx">dir</span><span class="p">)</span> <span class="p">{</span>                                                                                                                                         
+   <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>                                                                                                                        
+       <span class="nx">find</span><span class="p">.</span><span class="nx">file</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="nx">resolve</span><span class="p">).</span><span class="nx">error</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>                                                                                                                                                      
+   <span class="p">})</span>                                                                                                                                                                     
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">exampleFiles</span> <span class="o">=</span> <span class="nx">findFile</span><span class="p">(</span><span class="s1">&apos;example&apos;</span><span class="p">)</span>
+<span class="nx">exampleFiles</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ &apos;example/file1.txt&apos;, &apos;example/file2.html&apos;, &apos;example/file3.md&apos; ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let&apos;s test out the error functionality:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">findFile</span><span class="p">(</span><span class="s1">&apos;not a dir&apos;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>Error: not a dir does not exist.
+    at Object.notExist (/home/minnie/workspace/node/node_modules/find/index.js:41:12)
+    at traverseAsync (/home/minnie/workspace/node/node_modules/find/index.js:163:28)
+    at /home/minnie/workspace/node/node_modules/find/index.js:282:7
+    at process._tickCallback (internal/process/next_tick.js:61:11)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="After-Promises">After Promises<a class="anchor-link" href="#After-Promises">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we have this function wrapped in a Promise we can chain all sorts of stuff that rely on the list of files being loaded:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&apos;path&apos;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">getBasenames</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">files</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">returnVal</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+         <span class="kr">const</span> <span class="nx">ext</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+         <span class="k">return</span> <span class="nx">returnVal</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span>
+    <span class="p">},</span> <span class="p">[])</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getExtensions</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">files</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">returnVal</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="nx">returnVal</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">el</span><span class="p">))</span>
+    <span class="p">},</span> <span class="p">[])</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getHtml</span><span class="p">(</span><span class="nx">exts</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">exts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">returnVal</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">el</span><span class="o">==</span><span class="s1">&apos;.html&apos;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">returnVal</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">returnVal</span>
+    <span class="p">},</span> <span class="p">[])</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">myFiles</span> <span class="o">=</span> <span class="nx">findFile</span><span class="p">(</span><span class="s1">&apos;example&apos;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">basenames</span> <span class="o">=</span> <span class="nx">myFiles</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">getBasenames</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">htmlExtensions</span> <span class="o">=</span> <span class="nx">myFiles</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">getExtensions</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">getHtml</span><span class="p">)</span>
+
+<span class="nx">myFiles</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>    
+<span class="nx">basenames</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+<span class="nx">htmlExtensions</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ &apos;example/file1.txt&apos;, &apos;example/file2.html&apos;, &apos;example/file3.md&apos; ]
+[ &apos;file1&apos;, &apos;file2&apos;, &apos;file3&apos; ]
+[ &apos;.html&apos; ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I can&apos;t actually think of a case where getting all the html extensions is useful but that&apos;s besides the point. The point is you can chain <code>then</code>&apos;s and assign stuff to variables or constants to be used later. And when they&apos;re used they&apos;ll have had their value assigned from the asynchronous logic.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The end.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="&#x2F;2018&#x2F;10&#x2F;03&#x2F;Atari-Breakout-In-JavaScript/" rel="prev" title="Atari Breakout In JavaScript">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">Atari Breakout In JavaScript</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
