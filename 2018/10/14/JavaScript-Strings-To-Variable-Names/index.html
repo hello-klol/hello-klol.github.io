@@ -1,0 +1,326 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content="A little trick I used in my blog generator code that I may need reminding of in future">
+<meta name="keywords" content="katie clark, javascript">
+
+<title>JavaScript Strings To Variable Names | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Strings To Variable Names">
+<meta property="og:url" content="http://hello-klol.github.io/2018/10/14/JavaScript-Strings-To-Variable-Names/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="A little trick I used in my blog generator code that I may need reminding of in future">
+<meta property="og:locale" content="English">
+    <title>JavaScript Strings To Variable Names</title>
+  </head>
+  <body>
+<div class="header">
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/_katie_clark_" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://stackoverflow.com/users/1168920/katie" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/10/14/JavaScript-Strings-To-Variable-Names/">
+    <h1 class="post-title" itemprop="name headline">JavaScript Strings To Variable Names</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2018-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-14T00:00:00Z">2018-10-14</time>
+    <div class="post-description">A little trick I used in my blog generator code that I may need reminding of in future</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <div class="notebook">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For generating my blog I need to load all the partials templates into variables of particular names so I can feed them into my <a href="https://mustache.github.io/mustache.5.html" rel="external" target="_blank">Mustache</a> templates.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First I load all the files in my partials directory into an array of filenames. I strip the file extension from them so I have all the strings I want to use as my variable names:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kr">const</span> <span class="nx">partialFiles</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readdirSync</span><span class="p">(</span><span class="s1">&apos;./partials/&apos;</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">partials</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">ext</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ext</span><span class="o">==</span><span class="s1">&apos;.mustache&apos;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">partials</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">ext</span><span class="p">))</span>
+    <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">partials</span>
+<span class="p">},</span> <span class="p">[])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">partialFiles</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ &apos;archive-head-meta&apos;,
+  &apos;archive&apos;,
+  &apos;blog-post&apos;,
+  &apos;head-meta&apos;,
+  &apos;header&apos;,
+  &apos;post-footer&apos;,
+  &apos;post-head-meta&apos;,
+  &apos;post-header&apos;,
+  &apos;post-meta&apos;,
+  &apos;post&apos;,
+  &apos;web-page-meta&apos; ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now I want to load the contents of each of these files into a variable of the same name. Well, since these names have &apos;-&apos; character in them I could never really do that, <em>but</em> that doesn&apos;t really matter in this case because I can stick them all in an object and have the filenames as the key and my file contents as the value.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">function</span> <span class="nx">getPartialTemplate</span><span class="p">(</span><span class="nx">partialFileName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&apos;partials&apos;</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nx">partialFileName</span><span class="si">}</span><span class="sb">.mustache`</span><span class="p">)).</span><span class="nx">toString</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">addPartialTemplate</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">partialFileName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">partialFileName</span><span class="p">]</span><span class="o">:</span> <span class="nx">getPartialTemplate</span><span class="p">(</span><span class="nx">partialFileName</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">partials</span> <span class="o">=</span> <span class="nx">partialFiles</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">addPartialTemplate</span><span class="p">,</span> <span class="p">{})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">partials</span><span class="p">[</span><span class="s1">&apos;web-page-meta&apos;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&apos;&lt;link href=&quot;/css/about.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;\n&apos;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">partials</span><span class="p">.</span><span class="nx">post</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&apos;&lt;article itemscope itemtype=&quot;http://schema.org/Article&quot;&gt;\n  &lt;div class=&quot;post-block&quot;&gt;\n    &lt;link itemprop=&quot;mainEntityOfPage&quot; href=&quot;http://hello-klol.github.io/{{&amp; datePath}}&quot;&gt;\n\n    {{&gt; post-meta}}\n    {{&gt; post-header}}\n\n    &lt;div class=&quot;post-body&quot; itemprop=&quot;articleBody&quot;&gt;\n      {{{ content }}}\n    &lt;/div&gt;\n\n    {{&gt; post-footer}}\n  &lt;/div&gt;\n&lt;/article&gt;\n&apos;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This object can now be passed to Mustache and the partials can be identified by their filename without me having to specify names anywhere in the code. This is handy because as I add more partials I won&apos;t need to change the code - just make adjustments to my template files.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="/2018/10/14/JavaScript-Iterables-And-Generators/" rel="prev" title="JavaScript Iterables And Generators">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">JavaScript Iterables And Generators</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
