@@ -1,0 +1,689 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content="My virtualenv setup and using Jupyter Notebooks with Python, JavaScript, and Bash">
+<meta name="keywords" content="katie clark, javascript, python, virtualenv, bash, jupyter, ipython">
+
+<title>My Python Setup and More | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="My Python Setup and More">
+<meta property="og:url" content="http://hello-klol.github.io/2018/10/15/My-Python-Setup-And-More/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="My virtualenv setup and using Jupyter Notebooks with Python, JavaScript, and Bash">
+<meta property="og:locale" content="English">
+    <title>My Python Setup and More</title>
+  </head>
+  <body>
+<div class="header">
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/_katie_clark_" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://stackoverflow.com/users/1168920/katie" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/10/15/My-Python-Setup-And-More/">
+    <h1 class="post-title" itemprop="name headline">My Python Setup and More</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2018-10-15 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-15T00:00:00Z">2018-10-15</time>
+    <div class="post-description">My virtualenv setup and using Jupyter Notebooks with Python, JavaScript, and Bash</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <div class="notebook">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I&apos;ve started using Jupyter Notebooks for making notes on things I&apos;m learning. Even JavaScript. From a quick Google, it looks like <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" rel="external" target="_blank">kernels are available</a> for most other commonly used programming languages too so I&apos;ll probably continue adding kernels and write notebooks for <em>everything</em>.</p>
+<p>Here&apos;s my setup:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="JavaScipt-Notebooks">JavaScipt Notebooks<a class="anchor-link" href="#JavaScipt-Notebooks">&#xB6;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For JavaScript I just install a kernel from <a href="http://n-riesco.github.io/ijavascript/doc/usage.md.html" rel="external" target="_blank">IJavaScript</a>. It relies on Jupyter Notebooks already being installed which I&apos;ll go into below, but it was as simple to set up as just installing it globally (I tried locally first and it didn&apos;t work) using Node:</p>
+<p><code>node ijsinstall</code></p>
+<p>and running:</p>
+<p><code>jupyter notebook</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-Workspace-Setup">Python Workspace Setup<a class="anchor-link" href="#Python-Workspace-Setup">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I try to only ever use Python3 these days but every now and then come across legacy code so need Python2.7 installed too. Here&apos;s my setup to try keep things clean. Most of the process was <a href="https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14" rel="external" target="_blank">copied from here</a>.</p>
+<p>I use:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+  <li><a href="https://github.com/pyenv/pyenv" rel="external" target="_blank"><code>pyenv</code></a> to install Python interpreters</li>
+<li><code>pyenv-virtualenv</code> to manage virtualenvs </li>
+<li><code>pyenv-virtualenvwrapper</code> to automate virtualenv management for my projects</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Install-PyEnv-and-Python-Versions">Install PyEnv and Python Versions<a class="anchor-link" href="#Install-PyEnv-and-Python-Versions">&#xB6;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before installing Python interpreters I first install the <code>pyenv</code> tools above.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>virtualenvwrapper</code> puts all virtualenvs in a one directory, and all project code into another.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>All my virtualenvs go in <code>~/.ve</code></p>
+</li>
+<li><p>All my projects go in <code>~/workspace</code></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>virtualenvwrapper</code> relies on a couple of variables which need to be exported in <code>.bashrc</code> to work. Initializing <code>pyenv</code> should also be added here.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span>~/.ve
+<span class="nb">export</span> <span class="nv">PROJECT_HOME</span><span class="o">=</span>~/workspace
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pyenv</span> init -<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(Remember to reload the file after changes: <code>source ~/.bashrc</code>)</p>
+<p>Then use <code>pyenv</code> to install the interpreters that will be used globally. The script from the following repo simplifies getting the latest version avaialble.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">git</span> clone https://github.com/momo-lab/pyenv-install-latest.<span class="nb">git</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pyenv</span> root<span class="k">)</span><span class="s2">&quot;</span>/plugins/pyenv-install-latest
+
+<span class="nb">pyenv</span> install-latest
+<span class="nb">pyenv</span> install-latest <span class="m">2</span>.7
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or to specify precisely which version simply use</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> install <span class="m">3</span>.6.0
+<span class="nb">pyenv</span> install <span class="m">2</span>.7.13
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Installing-Jupyter">Installing Jupyter<a class="anchor-link" href="#Installing-Jupyter">&#xB6;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>virtualenvs</code> are great for avoiding library conflict issues. But there are some things I&apos;m not going to be installing multiple versions of - like Jupyter Notebook, and it&apos;s associated iPython consoles for Python3 and Python2.</p>
+<p>I&apos;ll still make separate virtual environments for these things, but I&apos;ll make them globally available via the PATH so I don&apos;t have to repeatedly install them for each new project I make.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Setup-Jupyter-and-IPython-for-Python3">Setup Jupyter and IPython for Python3<a class="anchor-link" href="#Setup-Jupyter-and-IPython-for-Python3">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When I install Jupyter on Python3 it will by default install iPython and the kernel too</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> virtualenv <span class="m">3</span>.6.6 ipython3
+
+<span class="nb">pyenv</span> activate ipython3
+<span class="nb">pip</span> install jupyter
+<span class="nb">python</span> <span class="o">-m</span> ipykernel install <span class="o">--user</span>
+<span class="nb">pyenv</span> deactivate
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Setup-IPython-for-Python2">Setup IPython for Python2<a class="anchor-link" href="#Setup-IPython-for-Python2">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For Python2 I only need to install iPython and the kernel</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> virtualenv <span class="m">2</span>.7.15 ipython2
+
+<span class="nb">pyenv</span> activate ipython2
+<span class="nb">pip</span> install ipykernel
+<span class="nb">python</span> <span class="o">-m</span> ipykernel install <span class="o">--user</span>
+<span class="nb">pyenv</span> deactivate
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Setup-Kernel-for-Bash">Setup Kernel for Bash<a class="anchor-link" href="#Setup-Kernel-for-Bash">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A bash kernel for Jupyter Notebooks is <a href="https://github.com/takluyver/bash_kernel" rel="external" target="_blank">available here</a>. Executing bash in a notebook instead of directly in the terminal is good for keeping notes, creating a script that can be rerun, and keeping track of what&apos;s already happened. Sure I could just write a script, but this way I can write up what&apos;s happening with lovely Markdown. And yeah you can run bash in a Python kernel with magic but what if I don&apos;t want to.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> virtualenv <span class="m">3</span>.6.6 bash
+
+<span class="nb">pyenv</span> activate bash
+<span class="nb">pip</span> install ipykernel
+<span class="nb">pip</span> install bash_kernel
+<span class="nb">python</span> <span class="o">-m</span> bash_kernel.install
+<span class="nb">pyenv</span> deactivate
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now I add the above Python versions and virtualenvs to the PATH in order of priority so they can be accessed in the right order without having to activate any virtualenv. This means I can call <code>jupyter notebook</code> from anywhere and have access to the same kernel installs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> global <span class="m">3</span>.6.0 <span class="m">2</span>.7.13 ipython3 ipython2 bash
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-new-virtualenvs-for-projects">Creating new virtualenvs for projects<a class="anchor-link" href="#Creating-new-virtualenvs-for-projects">&#xB6;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is where <code>pyenv-virtualenvwrapper</code> and the <code>~/workspace</code> directory come in.</p>
+<p>It&apos;s time to add the following to the bottom of the <code>~/.barshrc</code> file and reload (<code>source ~/.bashrc</code>):</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">pyenv</span> virtualenvwrapper_lazy
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This will install <code>virtualenvwrapper</code>&apos;s dependencies if they&#x2019;re not present, and allows use of the <a href="https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html" rel="external" target="_blank">virtualenvwrapper commands</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="New-Project">New Project<a class="anchor-link" href="#New-Project">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, now if I run:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">mkproject</span> myProject
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An empty project directory will be created at <code>~/workspace/myProject</code> and we will be relocated to this directory. A new virtualenv of the same name which has been stored in <code>~/.ve/myProject</code> will be activated. By default the virtualenv is made with Python3.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Existing-Project">Existing Project<a class="anchor-link" href="#Existing-Project">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If I want to work on an existing project which has already been set up using the method described above I can run:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">workon</span> myProject
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And I&apos;ll again be transported to the relevant project directory in <code>~/workspace</code> with the project&apos;s virtualenv activated.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python2-Project">Python2 Project<a class="anchor-link" href="#Python2-Project">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If I&apos;ve cloned a project which runs on Python2 to my workspace <code>~/workspace/myProject</code> and I need a virtualenv to work on it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">mkvirtualenv</span> <span class="o">-a</span> ~/workspace/myProject <span class="o">-p</span> python2 myProject
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above creates a virtualenv using Python2 at <code>~/.ve/myProject</code> and associates it to the project directory <code>~/workspace/myProject</code>.</p>
+<p>Now running</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">workon</span> myProject
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Activates the virtualenv and changes the directory to the project&apos;s path</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-Jupyter-to-Detect-the-Active-virtualenv">Getting Jupyter to Detect the Active <code>virtualenv</code><a class="anchor-link" href="#Getting-Jupyter-to-Detect-the-Active-virtualenv">&#xB6;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this, I copy a trick from the author of <a href="https://medium.com/@henriquebastos/the-definitive-guide-to-setup-my-python-workspace-628d68552e14#c222" rel="external" target="_blank">this article</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-bash"><pre><span></span><span class="nb">ipython</span> profile create
+<span class="nb">curl</span> -L http://hbn.link/hb-ipython-startup-script &gt; ~/.ipython/profile_default/startup/00-venv-sitepackages.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This cusomizes iPython&apos;s startup process and adds the active virualenvs site-packages to the system path.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I&apos;ve only recently started using this hack - beforehand I installed <code>ipykernels</code> in every virtualenv so different kernels would be listed for every virtualenv (and every project) I had. This allows working with two different virtualenvs in two different notebooks at the same time, but the list did begin to get out-of-hand.</p>
+<p>For now, I&apos;m testing out this method, which only allows working with one virtualenv kernel at a time. So far I&apos;ve not had any problems.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="/2018/10/15/Building-This-Blog/" rel="prev" title="Building This Blog">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">Building This Blog</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
