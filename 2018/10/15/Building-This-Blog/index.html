@@ -1,0 +1,497 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content="Fairly detailed notes about how and why I built the static site generator for this blog">
+<meta name="keywords" content="katie clark, javascript">
+
+<title>Building This Blog | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building This Blog">
+<meta property="og:url" content="http://hello-klol.github.io/2018/10/15/Building-This-Blog/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="Fairly detailed notes about how and why I built the static site generator for this blog">
+<meta property="og:locale" content="English">
+    <title>Building This Blog</title>
+  </head>
+  <body>
+<div class="header">
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/_katie_clark_" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://stackoverflow.com/users/1168920/katie" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2018/10/15/Building-This-Blog/">
+    <h1 class="post-title" itemprop="name headline">Building This Blog</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2018-10-15 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-15T00:00:00Z">2018-10-15</time>
+    <div class="post-description">Fairly detailed notes about how and why I built the static site generator for this blog</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <div class="notebook">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-build-my-own-static-site-generator?">Why build my own static site generator?<a class="anchor-link" href="#Why-build-my-own-static-site-generator?">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This blog has been an exercise in learning JavaScript. Previously I was building static pages using Hexo with the Next theme (the look of this blog has many elements of the Next theme copied).</p>
+<p>Hexo has so many features and special effects which is cool, but also confusing. I wasn&apos;t able to easily customise it - like for the main pages which aren&apos;t part of my blog, or for displaying Jupyter Notebooks which I use a lot for making notes when learning new things.</p>
+<p>As Hexo is just a static page site generator, I decided to build my own very simplified version of it. This way I would know how every part of it worked and have complete control to make it look how I wanted. I&apos;ve lost a couple of features that I can one day add back in, such as comments from Disqus, and Google Analytics tags applied to each page, also I lost all the animations. But now I can post any custom type of page I like and have made code to convert Jupyter Notebook&apos;s and display them nicely.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Structure">The Structure<a class="anchor-link" href="#The-Structure">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+  <p>The main components of the site are split into templates and use a library called <a href="https://mustache.github.io/mustache.5.html" rel="external" target="_blank"><code>Mustache</code></a> to piece them together to create my static site.</p>
+<p>I have a bunch of <code>partials</code> that sit in their own folder - like the header and nav bar that appear on every page, and the navigation footer that is at the end of every post.</p>
+<p>I have three main <code>templates</code> at the moment which are the main types of page I might display, these are my <strong>main pages</strong> - simple pages that only contain the header and nav bar, my <strong>archive page</strong> that lists all blog posts, and my <strong>blog-post pages</strong> which includes the nav footer.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As I create new posts and pages I add them to a <code>source</code> directory and reference them in a <code>config file</code> which is basically just a  big JSON object. The config contains the page title, type, post-date, and path to source file.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally there is the script! The script reads loads all templates in the <code>partials</code> and <code>templates</code> directories, then loops through the config generating a new page for each entry, placing them in a <code>public</code> folder.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are also additional files to be copied to the public folder like <code>css</code>,<code>images</code>,<code>pdfs</code>,<code>js</code> etc</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="nx">blogPosts</span><span class="p">.</span><span class="nx">js</span> <span class="c1">// Config file of blog posts to be generated</span>
+<span class="nx">siteGenerator</span><span class="p">.</span><span class="nx">js</span> <span class="c1">// Script to be run in Node to convert all content into HTML</span>
+
+<span class="err">/ partials</span>
+      <span class="nx">header</span><span class="p">.</span><span class="nx">mustache</span>
+      <span class="nx">footer</span><span class="p">.</span><span class="nx">mutache</span>
+<span class="err">/ templates</span>
+      <span class="nx">mainPage</span><span class="p">.</span><span class="nx">mustache</span>
+      <span class="nx">archive</span><span class="p">.</span><span class="nx">mustache</span>
+      <span class="nx">blogPost</span><span class="p">.</span><span class="nx">mustache</span>
+<span class="err">/ source</span>
+    <span class="err">/ images</span>
+    <span class="err">/ pdfs</span>
+    <span class="err">/ blogPosts</span>
+        <span class="nx">myNotebook</span><span class="p">.</span><span class="nx">html</span>
+<span class="err">/ public</span>
+  <span class="p">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mustache">Mustache<a class="anchor-link" href="#Mustache">&#xB6;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There&apos;s not much to building <code>Mustache</code> templates, they&apos;re just HTML with a few additional tags for places to insert partials or variables. Here&apos;s a few examples of the different things you can insert:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Strings">Strings<a class="anchor-link" href="#Strings">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Double-curlies</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">titleVarName</span> <span class="o">=</span> <span class="s2">&quot;Home Page&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>example.mustache</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">titleVarName</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
+    <span class="o">&lt;</span><span class="err">/head&gt;</span>
+    <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="p">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="HTML">HTML<a class="anchor-link" href="#HTML">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Triple-curlies</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">mainContentHTML</span> <span class="o">=</span> <span class="s2">&quot;&lt;p&gt;Welcome to my website&lt;br/&gt;Take a look around&lt;/p&gt;&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>example.mustache</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="p">...</span>
+    <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+      <span class="p">{{{</span><span class="nx">mainContentHTML</span><span class="p">}}}</span>
+    <span class="o">&lt;</span><span class="err">/body&gt;</span>
+<span class="o">&lt;</span><span class="err">/html&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Partials">Partials<a class="anchor-link" href="#Partials">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Partials can be templates so need to be handled differently to HTML in order for variables to be passed into them.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">headerPartial</span> <span class="o">=</span> <span class="s2">&quot;&lt;div&gt;Welcome {{name}}. This is the header partial!&lt;/div&gt;&quot;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>example.mustache</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="p">{{</span><span class="o">&gt;</span> <span class="nx">headerPartial</span><span class="p">}}</span>
+  <span class="p">...</span>
+<span class="o">&lt;</span><span class="err">/body&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Links">Links<a class="anchor-link" href="#Links">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To avoid url escaping make sure to include ampersand:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>example.mustache</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="p">...</span>
+<span class="o">&lt;</span><span class="nx">link</span><span class="o">&gt;</span>
+  <span class="p">{{</span><span class="o">&amp;</span> <span class="nx">linkPath</span><span class="p">}}</span> 
+<span class="o">&lt;</span><span class="err">/link&gt;</span>
+<span class="p">...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Mustache-Rendering">Mustache Rendering<a class="anchor-link" href="#Mustache-Rendering">&#xB6;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kr">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">templatePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">contentVars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&apos;title&apos;</span><span class="o">:</span> <span class="s1">&apos;Archives&apos;</span><span class="p">,</span> <span class="s1">&apos;homePageLink&apos;</span><span class="o">:</span> <span class="s1">&apos;/&apos;</span><span class="p">,</span> <span class="s1">&apos;contentHTML&apos;</span><span class="o">:</span> <span class="nx">contentFromFile</span><span class="p">}</span>
+<span class="kr">const</span> <span class="nx">partials</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&apos;header&apos;</span><span class="o">:</span> <span class="nx">headerFromFile</span><span class="p">,</span> <span class="s1">&apos;footer&apos;</span><span class="o">:</span> <span class="nx">footerFromFile</span><span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[&#xA0;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kr">const</span> <span class="nx">renderedHTML</span> <span class="o">=</span> <span class="nx">Mustache</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">contentVars</span><span class="p">,</span> <span class="nx">partials</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="/2018/10/14/JavaScript-Strings-To-Variable-Names/" rel="prev" title="JavaScript Strings To Variable Names">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">JavaScript Strings To Variable Names</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
