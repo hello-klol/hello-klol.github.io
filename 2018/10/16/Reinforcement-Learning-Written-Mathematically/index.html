@@ -181,7 +181,7 @@ MathJax.Hub.Config({
 <ul>
 <li>$\mathcal{S}$, which is the <em>set of possible states</em>. </li>
 <li>$\mathcal{A}$, our <em>set of possible actions</em>.</li>
-<li>$\mathcal{R}$, our <em>distribution of our reward</em>, given a state-action pair. So it&apos;s a function mapping from state-action \mapsto reward. </li>
+<li>$\mathcal{R}$, our <em>distribution of our reward</em>, given a state-action pair. So it&apos;s a function mapping from state-action $\mapsto$ reward. </li>
 <li>$\mathbb{P}$, which is a <em>transition probability distribution</em> over your next state, that you&apos;re going to transition to given your state-action pair.</li>
 <li>$\gamma$, a <em>discount factor</em>, which is basically saying <em>how much we value rewards coming up soon versus later on</em>.</li>
 </ul>
@@ -230,7 +230,7 @@ A policy, $\pi$, is a function that specifies what action to take in each state.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So our objective can be redefined as:
-Find the optimal policy, $\pi*$, that maximises the cumulative (discounted) reward.</p>
+Find the optimal policy, $\pi^*$, that maximises the cumulative (discounted) reward.</p>
 <p>The term &quot;discounted&quot; is included here as we want to take into account our discount factor, $\gamma$, which balances how we value immediate vs. long term rewards.</p>
 
 </div>
@@ -276,8 +276,8 @@ $$\max\sum\limits_{t \ge 0} \gamma^t r_t$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The optimal policy, $\pi*$, is the policy, $\pi$ which maximises this reward:
-$$\pi* = \arg\max_{\pi}\mathbb{E}\left[\sum\limits_{t \ge 0} \gamma^t r_t|\pi\right]$$ 
+<p>The optimal policy, $\pi^*$, is the policy which maximises this reward:
+$$\pi^* = \arg\max_{\pi}\mathbb{E}\left[\sum\limits_{t \ge 0} \gamma^t r_t|\pi\right]$$ 
 with
 $$s_0 \sim p(s_0), a_t \sim \pi(\cdot|s_t), s_{t+1} \sim p(\cdot|s_t,a_t)$$</p>
 
@@ -296,8 +296,8 @@ $$s_0 \sim p(s_0), a_t \sim \pi(\cdot|s_t), s_{t+1} \sim p(\cdot|s_t,a_t)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can write our optimal policy $\pi*$ as maximizing the expected sum of future rewards over
-policy&apos;s $\pi$, where</p>
+<p>We can write our optimal policy $\pi^*$ as maximizing the expected sum of future rewards over
+policy&apos;s $\Pi$, where</p>
 <ul>
 <li>initial state, $s_0$, is sampled from our state distribution</li>
 <li>action, $a_t$, is sampled from our policy, given the state</li>
@@ -320,8 +320,8 @@ policy&apos;s $\pi$, where</p>
     </div>
     <span class="post-nav-divider"></span>
     <div class="post-nav-next post-nav-item">
-      <a href="/" rel="next" title="">
-        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      <a href="/2018/10/17/Reinforcement-Learning-Finding-The-Optimal-Policy/" rel="next" title="Reinforcement Learning Finding The Optimal Policy">
+        <div class="post-nav-item">Reinforcement Learning Finding The Optimal Policy</div><i class="fa fa-chevron-right"></i>
       </a>
     </div>
   </div>
