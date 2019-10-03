@@ -1,0 +1,681 @@
+<html>
+  <head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/css/html.css" rel="stylesheet" type="text/css">
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+
+<meta name="description" content="Exploring JavaScripts scope model and use of identifiers">
+<meta name="keywords" content="katie clark, javascript, var, let, const, block scope">
+
+<title>Scoping Things Out | Come with me now on a journey through code and data...</title>
+
+
+<link href="/css/post.css" rel="stylesheet" type="text/css">
+<link href="/css/notebook.css" rel="stylesheet" type="text/css">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scoping Things Out">
+<meta property="og:url" content="http://hello-klol.github.io/2019/10/03/Scoping-Things-Out/index.html">
+<meta property="og:site_name" content="Come with me now on a journey through code and data...">
+<meta property="og:description" content="Exploring JavaScripts scope model and use of identifiers">
+<meta property="og:locale" content="English">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+    <title>Scoping Things Out</title>
+  </head>
+  <body>
+<div class="header">
+  <div class="title-bar">
+    <span class="site-title">Come with me now on a journey through code and data...</span>
+  </div>
+  <nav class="site-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/" rel="section">
+          <i class="fa fa-fw fa-home"></i> <br>Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/about/" rel="section">
+          <i class="fa fa-fw fa-child"></i> <br>About</a>
+      </li>
+      <li class="nav-item">
+        <a href="/archives/" rel="section">
+          <i class="fa fa-fw fa-book"></i> <br>Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://github.com/hello-klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-github-alt"></i> <br>GitHub</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://twitter.com/hello_klol" rel="external" target="_blank">
+          <i class="fa fa-fw fa-twitter"></i> <br>Twitter</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://stackoverflow.com/users/story/1168920" rel="external" target="_blank">
+          <i class="fa fa-fw fa-stack-overflow"></i> <br>StackOverflow</a>
+      </li>
+      <li class="nav-item">
+        <a href="/katie-clark-resume.pdf" rel="section"i target="_blank">
+          <i class="fa fa-fw fa-user"></i> <br>Resume</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+<span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  <meta itemprop="name" content="Katie Clark">
+  <meta itemprop="description" content="It's a Data Science blog">
+  <meta itemprop="image" content="/images/avatar.gif">
+</span>
+<span>
+  <meta itemprop="name" content="Come with me now on a journey through code and data...">
+</span>
+
+
+<header>
+  <link itemprop="mainEntityOfPage" href="http://hello-klol.github.io/2019/10/03/Scoping-Things-Out/">
+    <h1 class="post-title" itemprop="name headline">Scoping Things Out</h1>
+  </link>
+  <div class="post-meta">
+    <span class="post-meta-icon">
+      <i class="fa fa-calendar-o"></i>
+    </span>
+    <span class="post-meta-text">Posted on</span>
+    <time title="Created: 2019-10-03 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-03T00:00:00Z">2019-10-03</time>
+    <div class="post-description">Exploring JavaScripts scope model and use of identifiers</div>
+  </div>
+</header>
+
+    <div class="post-body" itemprop="articleBody">
+      <div class="notebook">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="info">
+I&apos;m working my way through the points in this <a href="https://medium.com/@steCoersionphenthecurt/33-fundamentals-every-javascript-developer-should-know-13dd720a90d1" rel="external" target="_blank">list of 33 fundamentals every JavaScript developer should know</a> in order to make sure I understand the language thoroughly. 
+
+This notebook is for working through code relating to point 6.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Scope-and-Context">Scope and Context<a class="anchor-link" href="#Scope-and-Context">&#xB6;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>When we talk about <strong>scope</strong> we are talking about the variables a piece of code has access to at runtime.</li>
+<li>When we talk about <strong>context</strong> we are talking about the value of <code>this</code> and all of it&apos;s properties.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="var-is-bananas"><code>var</code> is bananas<a class="anchor-link" href="#var-is-bananas">&#xB6;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Variables defined in the default or root scope are accessible globally, and variables defined within functions are only accessible within that function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&apos;apples&apos;</span>
+
+<span class="kd">function</span> <span class="nx">fruitVendor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="s1">&apos;bananas&apos;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are inside the scope of the fruitVendor function:&apos;</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; a is for &apos;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; b is for &apos;</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;\n&apos;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">fruitVendor</span><span class="p">()</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are at the default or root scope level:&apos;</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; a is for &apos;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; b is for &apos;</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>We are inside the scope of the fruitVendor function:
+&gt; a is for apples
+&gt; b is for bananas
+
+
+We are at the default or root scope level:
+&gt; a is for apples
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>evalmachine.&lt;anonymous&gt;:15
+console.log(&apos;&gt; b is for &apos; + b)
+                            ^
+
+ReferenceError: b is not defined
+    at evalmachine.&lt;anonymous&gt;:15:29
+    at Script.runInThisContext (vm.js:96:20)
+    at Object.runInThisContext (vm.js:303:38)
+    at run ([eval]:1054:15)
+    at onRunRequest ([eval]:888:18)
+    at onMessage ([eval]:848:13)
+    at process.emit (events.js:182:13)
+    at emit (internal/child_process.js:812:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We get <strong>scope conflict</strong> when there is a variable of the same name in the parent and child scope.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&apos;apples&apos;</span>
+
+<span class="kd">function</span> <span class="nx">fruitVendor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&apos;avocados&apos;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are inside the scope of the fruitVendor function:&apos;</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; a is for &apos;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;\n&apos;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">fruitVendor</span><span class="p">()</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are at the default or root scope level:&apos;</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; a is for &apos;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>We are inside the scope of the fruitVendor function:
+&gt; a is for avocados
+
+
+We are at the default or root scope level:
+&gt; a is for apples
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although the code runs, the problem is that we no longer have access to the parent variable of the same name due to naming conflicts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>This is not really new information. But we are going somewhere with this which is JS specific so bear with me.</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Above, we looked at function scope, but what about block scope? Is there much difference here when we try to define variables inside <code>if</code>, <code>for</code>, or <code>while</code> blocks of code?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="s1">&apos;clementine&apos;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; c is for &apos;</span> <span class="o">+</span> <span class="nx">c</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; c is for clementine
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>var</code> values can be accessed outside of the scope of the block in which they were defined. This is considered by some to be inconsistent and confusing, particularly because you might feel that scope could be imagined as being encapsulated in curly braces. Lack of block scope isn&apos;t something you&apos;d be used to if coming from many other programming languages. So in ES6 a new pair of definitions were introduced....</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="let-and-const"><code>let</code> and <code>const</code><a class="anchor-link" href="#let-and-const">&#xB6;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">let</span> <span class="nx">d</span> <span class="o">=</span> <span class="s1">&apos;durians&apos;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">e</span> <span class="o">=</span> <span class="s1">&apos;elderberries&apos;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are inside the scope of the if block:&apos;</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; d is for &apos;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; e is for &apos;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;\n&apos;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;We are at the default or root scope level:&apos;</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; d is for &apos;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&apos;&gt; e is for &apos;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>We are inside the scope of the if block:
+&gt; d is for durians
+&gt; e is for elderberries
+
+
+We are at the default or root scope level:
+&gt; d is for durians
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>evalmachine.&lt;anonymous&gt;:13
+console.log(&apos;&gt; e is for &apos; + e)
+                            ^
+
+ReferenceError: e is not defined
+    at evalmachine.&lt;anonymous&gt;:13:29
+    at Script.runInThisContext (vm.js:96:20)
+    at Object.runInThisContext (vm.js:303:38)
+    at run ([eval]:1054:15)
+    at onRunRequest ([eval]:888:18)
+    at onMessage ([eval]:848:13)
+    at process.emit (events.js:182:13)
+    at emit (internal/child_process.js:812:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now block scope is operating the same as function scope and we can all sleep soundly at night. Hooray.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Getting-Loopy">Getting Loopy<a class="anchor-link" href="#Getting-Loopy">&#xB6;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we know that <code>let</code> and <code>var</code> operate differently in terms of scope. What happens if we use <code>var</code> when adding lazy loaded functions to an array, executing them at some later time?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">var</span> <span class="nx">toBeExecuted</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="nx">toBeExecuted</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nx">toBeExecuted</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">lazyFn</span> <span class="p">=&gt;</span> <span class="nx">lazyFn</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+3
+3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What happened? Instead of creating a local variable <code>i</code> for each increment in the loop, it ended up printing the final value for that variable for all function calls.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It feels unexpected and although there are work-arounds for still using a <code>var</code> they can be a little verbose.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Enter the <code>let</code> keyword:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="kd">let</span> <span class="nx">letItBeExecuted</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="nx">letItBeExecuted</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nx">letItBeExecuted</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">lazyFn</span> <span class="p">=&gt;</span> <span class="nx">lazyFn</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Magic &#x2728;</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-Warning">A Warning<a class="anchor-link" href="#A-Warning">&#xB6;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It&apos;s important to note that JS still compiles when you create a new variable, even if you don&apos;t specify <code>var</code>, <code>const</code>, or <code>let</code>. When you do so, it first searches the current scope for a variable of that name, then trickles up through parents layers.</p>
+<p>&#x26A0;&#xFE0F; If it doesn&apos;t find it all the way up to the root, it will create the variable there in the root layer, also known as a global variable. This is known as <strong>&quot;polluting the global scope&quot;</strong>.</p>
+<p>To avoid this place the string <code>&quot;use strict&quot;</code> at the top of the entry point file, causing a <code>ReferenceError</code> message if this is attempted. <a href="https://www.w3schools.com/js/js_strict.asp">This trick solves a whole host of other problems as well.</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&#xA0;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-javascript"><pre><span></span><span class="s2">&quot;use strict&quot;</span>
+<span class="kd">function</span> <span class="nx">badFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">w</span> <span class="o">=</span> <span class="s1">&apos;watermelon&apos;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">w</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>evalmachine.&lt;anonymous&gt;:6
+console.log(w)
+            ^
+
+ReferenceError: w is not defined
+    at evalmachine.&lt;anonymous&gt;:6:13
+    at Script.runInThisContext (vm.js:96:20)
+    at Object.runInThisContext (vm.js:303:38)
+    at run ([eval]:1054:15)
+    at onRunRequest ([eval]:888:18)
+    at onMessage ([eval]:848:13)
+    at process.emit (events.js:182:13)
+    at emit (internal/child_process.js:812:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let&apos;s stop here for now. Next time we will dive deeper into what <strong>lexical scope</strong> really means. We&apos;ll get into closures and hoisting, and even explore the differece between dynamic and static scoping to really understand what we&apos;re working with.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>&apos;til next time &#x1F44B;</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+    </div>
+
+<footer>
+  <div class="post-nav">
+    <div class="post-nav-prev post-nav-item">
+      <a href="/2018/10/22/Quirky-JavaScripts-Type-Coercion-and-Comparison-Operators/" rel="prev" title="Quirky JavaScripts">
+        <i class="fa fa-chevron-left"></i><div class="post-nav-item">Quirky JavaScripts</div>
+      </a>
+    </div>
+    <span class="post-nav-divider"></span>
+    <div class="post-nav-next post-nav-item">
+      <a href="/" rel="next" title="">
+        <div class="post-nav-item"></div><i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+  </div>
+</article>
+  </body>
+</html>
